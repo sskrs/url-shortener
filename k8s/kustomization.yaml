@@ -1,0 +1,24 @@
+# Stage 3: deploy everything with:  kubectl apply -k k8s/
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: url-shortener
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - postgres.yaml
+  - redis.yaml
+  - app.yaml
+  - ingress.yaml
+
+# The database password comes from k8s/secrets.env, which Git ignores.
+# Copy secrets.env.example to secrets.env and set your own value first.
+secretGenerator:
+  - name: url-shortener-secrets
+    envs:
+      - secrets.env
+
+images:
+  - name: url-shortener
+    newName: ghcr.io/OWNER/url-shortener
+    newTag: main

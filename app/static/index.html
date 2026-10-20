@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <h1>URL Shortener</h1>
+    <form id="shorten-form">
+      <input id="url" type="url" placeholder="https://example.com/a/very/long/link" required>
+      <button type="submit">Shorten</button>
+    </form>
+    <p id="result" aria-live="polite"></p>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
